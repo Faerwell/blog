@@ -1,9 +1,10 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, flash
 
 app = Flask(__name__)
 menu = [{'name': 'Главная', 'url': 'index'},
         {'name': 'О сайте', 'url': 'about'}]
 brand = 'Faerwell'
+app.config['SECRET_KEY'] = 'fdgdfgdfggf786hfg6hfg6h7f'
 
 
 @app.route('/')
@@ -17,6 +18,10 @@ def index():
 def about():
     if request.method == 'POST':
         print(request.form)
+    if len(request.form['email']) != 0:
+        flash('Сообщение отправлено', category='success')
+    else:
+        flash('Ошибка отправки', category='error')
     return render_template('about.html', title='About Page', head_text='О сайте', menu=menu, brand=brand)
 
 

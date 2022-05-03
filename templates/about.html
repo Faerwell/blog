@@ -2,6 +2,7 @@
  
 {% block content %}
 {{ super() }}
+
 <h3>Форма обратной связи</h3>
 <form action="/about" method="post">
     <input type="email" id="email" name="email" placeholder="Email address" required />
@@ -9,4 +10,8 @@
     <input type="text" id="text" name="text" placeholder="Ваш вопрос..." required/>
     <button type="submit">Отправить</button>
 </form>
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+
 {% endblock %}
