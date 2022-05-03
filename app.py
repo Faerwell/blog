@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 
 app = Flask(__name__)
 menu = [{'name': 'Главная', 'url': 'index'},
@@ -9,13 +9,15 @@ brand = 'Faerwell'
 @app.route('/')
 @app.route("/index")
 def index():
-    return render_template('index.html', title = 'Blog Home Page', head_text = 'Главная страничка', menu = menu,
-                           brand = brand)
+    return render_template('index.html', title='Blog Home Page', head_text='Главная страничка', menu=menu,
+                           brand=brand)
 
 
-@app.route('/about')
+@app.route('/about', methods=["POST", "GET"])
 def about():
-    return render_template('about.html', title = 'About Page', head_text = 'О сайте', menu = menu, brand = brand)
+    if request.method == 'POST':
+        print(request.form)
+    return render_template('about.html', title='About Page', head_text='О сайте', menu=menu, brand=brand)
 
 
 @app.route('/profile/<username>')

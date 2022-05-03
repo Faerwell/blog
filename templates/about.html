@@ -2,5 +2,11 @@
  
 {% block content %}
 {{ super() }}
-Содержимое страницы "о сайте"
+<h3>Форма обратной связи</h3>
+<form action="/about" method="post">
+    <input type="email" id="email" name="email" placeholder="Email address" required />
+    <small>Мы никогда не будем делиться вашей электронной почтой с кем-либо ещё.</small>
+    <input type="text" id="text" name="text" placeholder="Ваш вопрос..." required/>
+    <button type="submit">Отправить</button>
+</form>
 {% endblock %}
