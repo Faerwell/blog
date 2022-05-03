@@ -18,16 +18,21 @@ def index():
 def about():
     if request.method == 'POST':
         print(request.form)
-    if len(request.form['email']) != 0:
-        flash('Сообщение отправлено', category='success')
-    else:
-        flash('Ошибка отправки', category='error')
+        if len(request.form['email']) != 0:
+            flash('Сообщение отправлено', category='success')
+        else:
+            flash('Ошибка отправки', category='error')
     return render_template('about.html', title='About Page', head_text='О сайте', menu=menu, brand=brand)
 
 
 @app.route('/profile/<username>')
 def profile(username):
     return f'Пользователь: {username}'
+
+
+@app.errorhandler(404)
+def pageNotFound(error):
+    return render_template('404.html', title='Страница не найдена', menu=menu)
 
 
 with app.test_request_context():
