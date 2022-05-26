@@ -4,7 +4,11 @@ from config import Config
 
 
 @app.route('/')
-@app.route("/index")
+@app.route('/index')
 def index():
-    return render_template('index.html', title='Blog Home Page', head_text='Главная страничка', menu=Config.menu,
-                           brand=Config.brand)
+    return render_template('index.html', title='Домашняя страничка', menu=Config.menu, brand=Config.brand)
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html', title='О сайте', menu=Config.menu, brand=Config.brand)

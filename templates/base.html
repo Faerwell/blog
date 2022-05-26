@@ -19,11 +19,11 @@
       {%- block main_menu -%}
         <nav>
           <ul>
-            <li><strong> {{ brand }} </strong></li>
+            <li><a href="{{ url_for('index') }}"><strong> {{ brand }} </strong></a></li>
           </ul>
           <ul>
             {% for menu_item in menu %}
-              <li><a href="{{menu_item.url}}">{{menu_item.name}}</a></li>
+              <li><a href="{{ url_for(menu_item.url) }}">{{ menu_item.name }}</a></li>
             {% endfor %}
           </ul>
         </nav>
