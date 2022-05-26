@@ -2,8 +2,8 @@
  
 {% block content %}
 {{ super() }}
-
-<h3>Форма обратной связи</h3>
+<p>Описание сайта...</p>
+<h5>Форма обратной связи:</h5>
 <form action="/about" method="post">
     <input type="email" id="email" name="email" placeholder="Email address" required />
     <small>Мы никогда не будем делиться вашей электронной почтой с кем-либо ещё.</small>
@@ -13,5 +13,4 @@
 {% for cat, msg in get_flashed_messages(True) %}
 <div class="flash {{cat}}">{{msg}}</div>
 {% endfor %}
-
 {% endblock %}
